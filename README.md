@@ -1,0 +1,2 @@
+# OpenWrt-GL.iNet-AXT1800
+云编译AX1800和AXT1800
