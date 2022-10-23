@@ -20,15 +20,12 @@ feeds:
   - name: NueXini_Packages
     uri: https://github.com/NueXini/NueXini_Packages.git
     branch: main
-    revision: 7aeb2ca7841a76baaf15ee37872eb3b39fb9bbfb
+    revision: ece4e5e0475371ed02b4f87b697af6009b4f4d3f
 include:
   - wifi-ax
 packages:
   - kmod-hwmon-pwmfan
   - wget-ssl
-  - kmod-usb-ledtrig-usbport
-  - kmod-usb-net-cdc-mbim
-  - kmod-usb-net-sierrawireless
   - usbutils
   - minicom
   - procps-ng
