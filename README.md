@@ -40,6 +40,10 @@ OpenWrt-GL.iNet-AXT1800
 └── README.md
 ```
 
+## 定制说明
+
+在原作者[draco-china](https://github.com/draco-china/Draco-OpenWrt-GL-AX1800)上进行自己定制
+
 ## 其他说明
 
 - 基于官方编译器 <https://github.com/gl-inet/gl-infra-builder> 构建, 支持官方界面
