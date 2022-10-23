@@ -7,18 +7,18 @@
  module.exports = [
 
   //依赖
-  // {
-  //    name: 'kmod-usb-ledtrig-usbport',
-  //    desc: 'kmod-usb-ledtrig-usbport',
-  // },
-  // {
-  //   name: 'kmod-usb-net-cdc-mbim',
-  //   desc: 'kmod-usb-net-cdc-mbim',
-  // },
-  // {
-  //   name: 'kmod-usb-net-sierrawireless',
-  //   desc: 'kmod-usb-net-sierrawireless',
-  // },
+  {
+     name: 'kmod-usb-ledtrig-usbport',
+     desc: 'kmod-usb-ledtrig-usbport',
+  },
+  {
+    name: 'kmod-usb-net-cdc-mbim',
+    desc: 'kmod-usb-net-cdc-mbim',
+  },
+  {
+    name: 'kmod-usb-net-sierrawireless',
+    desc: 'kmod-usb-net-sierrawireless',
+  },
   
   //工具
   {
