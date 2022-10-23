@@ -1,0 +1,39 @@
+
+name: GENERATE CONFIG
+
+on:
+  repository_dispatch:
+  workflow_dispatch:
+
+  push:
+    paths:
+      - 'scripts/*'
+    branches:
+      - main
+
+
+  schedule:
+    - cron: 0 16 * * *
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: node scripts/generate.js
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          personal_token: ${{ secrets.DEPLOY_KEY }}
+          publish_branch: main
+          publish_dir: ./
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@github.com'
+          exclude_assets: ''
+          keep_files: true
+
+      - name: Delete workflow runs
+        uses: GitRML/delete-workflow-runs@main
+        with:
+          retain_days: 1
+          keep_minimum_runs: 1

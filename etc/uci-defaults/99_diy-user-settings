@@ -1,0 +1,109 @@
+#!/bin/bash
+
+#设置 luci界面语言为中文
+uci set luci.main.lang=zh_cn
+#uci commit luci
+
+#设置主题为Argon
+uci set luci.main.mediaurlbase='/luci-static/argon'
+uci commit luci
+
+#系统时区设置
+uci set system.@system[0].timezone=CST-8
+uci set system.@system[0].zonename=Asia/Shanghai
+uci commit system
+
+#系统温度调整
+uci set glfan.@globals[0].temperature='60'
+uci set glfan.@globals[0].intergration='4'
+uci set glfan.@globals[0].differential='20'
+uci commit glfan
+
+#设置fstab开启热插拔自动挂载
+uci set fstab.@global[0].anon_mount=1
+uci commit fstab
+
+#无线配置
+uci set wireless.radio0=wifi-device
+uci set wireless.radio0.type='mac80211'
+uci set wireless.radio0.path='platform/soc/c000000.wifi'
+uci set wireless.radio0.band='5g'
+uci set wireless.radio0.htmode='HE80'
+uci set wireless.radio0.country='US'
+uci set wireless.radio0.disabled='0'
+uci set wireless.radio0.channel='auto'
+uci set wireless.radio0.legacy_rates='0'
+uci set wireless.radio0.channels='36 40 44 48 149 153 157 161 165'
+uci set wireless.radio0.hwmode='11a'
+uci set wireless.default_radio0=wifi-iface
+uci set wireless.default_radio0.device='radio0'
+uci set wireless.default_radio0.network='lan'
+uci set wireless.default_radio0.mode='ap'
+uci set wireless.default_radio0.wds='1'
+uci set wireless.default_radio0.isolate='0'
+uci set wireless.default_radio0.hidden='0'
+uci set wireless.default_radio0.disabled='0'
+uci set wireless.default_radio0.ssid='GL-AXT1800-5GHz'
+uci set wireless.default_radio0.encryption='none'
+#uci set wireless.default_radio0.key='12345678'
+uci commit wireless
+uci set wireless.radio1=wifi-device
+uci set wireless.radio1.type='mac80211'
+uci set wireless.radio1.path='platform/soc/c000000.wifi+1'
+uci set wireless.radio1.band='2g'
+uci set wireless.radio1.country='US'
+uci set wireless.radio1.disabled='0'
+uci set wireless.radio1.channel='auto'
+uci set wireless.radio1.htmode='HE40'
+uci set wireless.radio1.legacy_rates='0'
+uci set wireless.radio1.noscan='1'
+uci set wireless.radio1.hwmode='11g'
+uci set wireless.default_radio1=wifi-iface
+uci set wireless.default_radio1.device='radio1'
+uci set wireless.default_radio1.network='lan'
+uci set wireless.default_radio1.mode='ap'
+uci set wireless.default_radio1.wds='1'
+uci set wireless.default_radio1.isolate='0'
+uci set wireless.default_radio1.hidden='0'
+uci set wireless.default_radio1.disabled='0'
+uci set wireless.default_radio1.ssid='GL-AXT1800-2.4GHz'
+uci set wireless.default_radio1.encryption='none'
+#uci set wireless.default_radio1.key='12345678'
+uci commit wireless
+uci set wireless.guest5g=wifi-iface
+uci set wireless.guest5g.device='radio0'
+uci set wireless.guest5g.network='guest'
+uci set wireless.guest5g.mode='ap'
+uci set wireless.guest5g.guest='1'
+uci set wireless.guest5g.disabled='1'
+uci set wireless.guest5g.wds='1'
+uci set wireless.guest5g.isolate='1'
+uci set wireless.guest5g.ssid='GL-AXT1800-5GHz-Guest'
+uci set wireless.guest5g.encryption='none'
+#uci set wireless.guest5g.key='12345678'
+uci commit wireless
+uci set wireless.guest2g=wifi-iface
+uci set wireless.guest2g.device='radio1'
+uci set wireless.guest2g.network='guest'
+uci set wireless.guest2g.mode='ap'
+uci set wireless.guest2g.guest='1'
+uci set wireless.guest2g.disabled='1'
+uci set wireless.guest2g.wds='1'
+uci set wireless.guest2g.isolate='1'
+uci set wireless.guest2g.ssid='GL-AXT1800-2.4GHz-Guest'
+uci set wireless.guest2g.encryption='none'
+#uci set wireless.guest2g.key='12345678'
+uci commit wireless
+
+# 解决mwan3因找不到ip命令而无法启动的问题 
+ln -sf /sbin/ip /usr/bin/ip
+
+#iptables设置
+sed -i '/REDIRECT --to-ports 53/d' /etc/firewall.user
+echo 'iptables -t nat -A PREROUTING -p udp --dport 53 -j REDIRECT --to-ports 53' >> /etc/firewall.user
+echo 'iptables -t nat -A PREROUTING -p tcp --dport 53 -j REDIRECT --to-ports 53' >> /etc/firewall.user
+
+# 解决定时重启死循环问题
+echo '#30 4 * * * sleep 70 && touch /etc/banner && reboot' >> /etc/crontabs/root
+
+exit 0

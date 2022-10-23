@@ -1,0 +1,40 @@
+---
+profile: glinet_ax1800
+target: ipq807x
+subtarget: ipq60xx
+description: Build image for the GL.iNET AX1800
+image: bin/targets/ipq807x/ipq60xx/openwrt-ipq807x-glinet_ax1800-squashfs-sysupgrade.tar
+feeds:
+  - name: ipq807x
+    path: ../../feeds/ipq807x
+  - name: gl_feeds_common
+    uri: https://github.com/gl-inet/gl-feeds.git
+    branch: common
+  - name: luci
+    uri: https://github.com/openwrt/luci.git
+    revision: 1c3b32dc1bec15e3076a447762b1c4f94eb75fb7
+  - name: immortalwrt_luci
+    uri: https://github.com/immortalwrt/luci.git
+    branch: openwrt-21.02
+    revision: b51686093da7a4542f905e41e94a63823cedb793
+  - name: NueXini_Packages
+    uri: https://github.com/NueXini/NueXini_Packages.git
+    branch: main
+    revision: 3ac1f1f1060f96ab9a03aaf2e9b2a95e5e6ea8bc
+include:
+  - wifi-ax
+packages:
+  - wget-ssl
+  - luci-app-netdata
+  - luci-app-ttyd
+  - luci-app-nlbwmon
+  - luci-app-wrtbwmon
+  - luci-app-diskman
+  - luci-app-arpbind
+  - luci-app-upnp
+  - luci-theme-argon
+  - luci-app-argon-config
+  - luci-app-openclash
+  - luci-app-openvpn
+  - luci-app-zerotier
+  - luci-app-adguardhome
