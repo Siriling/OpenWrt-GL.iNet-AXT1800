@@ -26,6 +26,9 @@ include:
 packages:
   - kmod-hwmon-pwmfan
   - wget-ssl
+  - kmod-usb-ledtrig-usbport
+  - kmod-usb-net-cdc-mbim
+  - kmod-usb-net-sierrawireless
   - usbutils
   - minicom
   - procps-ng

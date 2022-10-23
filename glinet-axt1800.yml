@@ -29,6 +29,9 @@ packages:
   - wireless-regdb
   - wget-ssl
   - kmod-wireguard-backport
+  - kmod-usb-ledtrig-usbport
+  - kmod-usb-net-cdc-mbim
+  - kmod-usb-net-sierrawireless
   - usbutils
   - minicom
   - procps-ng
