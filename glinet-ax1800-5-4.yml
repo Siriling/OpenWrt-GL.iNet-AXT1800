@@ -16,25 +16,51 @@ feeds:
   - name: immortalwrt_luci
     uri: https://github.com/immortalwrt/luci.git
     branch: openwrt-21.02
-    revision: b51686093da7a4542f905e41e94a63823cedb793
+    revision: 60ab741c0da35c9b2781baeb4d133475e637eeb1
   - name: NueXini_Packages
     uri: https://github.com/NueXini/NueXini_Packages.git
     branch: main
-    revision: 3ac1f1f1060f96ab9a03aaf2e9b2a95e5e6ea8bc
+    revision: 63a9945b9a5eb7664f020f94ebf3716e34bd7dc3
 include:
   - wifi-ax
 packages:
   - wget-ssl
+  - kmod-usb-ledtrig-usbport
+  - kmod-usb-net-cdc-mbim
+  - kmod-usb-net-sierrawireless
+  - usbutils
+  - minicom
+  - procps-ng
+  - procps-ng-ps
+  - grep
+  - lsblk
+  - fdisk
+  - cfdisk
   - luci-app-netdata
   - luci-app-ttyd
   - luci-app-nlbwmon
   - luci-app-wrtbwmon
   - luci-app-diskman
+  - luci-app-watchcat
+  - luci-app-ramfree
+  - luci-app-eqos
+  - luci-app-sqm
+  - luci-app-accesscontrol
   - luci-app-arpbind
   - luci-app-upnp
+  - luci-app-firewall
+  - luci-app-ddns
+  - luci-app-wol
+  - luci-app-autoreboot
+  - luci-app-fileassistant
   - luci-theme-argon
   - luci-app-argon-config
+  - luci-app-ssr-plus
   - luci-app-openclash
-  - luci-app-openvpn
   - luci-app-zerotier
-  - luci-app-adguardhome
+  - luci-app-openvpn
+  - luci-app-unblockmusic
+  - luci-app-pushbot
+  - luci-app-aliyundrive-webdav
+  - luci-app-turboacc
+  - luci-app-uugamebooster
