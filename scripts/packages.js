@@ -87,10 +87,10 @@
     name: 'luci-app-eqos',
     desc: '基于IP地址限速',
   },
-  {
-    name: 'luci-app-sqm', //4.X内核固件编译不过
-    desc: '流量智能队列管理（QOS）',
-  },
+  // {
+  //   name: 'luci-app-sqm', //4.X内核固件编译不过
+  //   desc: '流量智能队列管理（QOS）',
+  // },
   {
     name: 'luci-app-accesscontrol',
     desc: '访问时间控制',
