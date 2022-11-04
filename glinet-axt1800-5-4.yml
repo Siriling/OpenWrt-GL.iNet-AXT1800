@@ -20,7 +20,7 @@ feeds:
   - name: NueXini_Packages
     uri: https://github.com/NueXini/NueXini_Packages.git
     branch: main
-    revision: 63a9945b9a5eb7664f020f94ebf3716e34bd7dc3
+    revision: aae627d57a4d5a98320f6c455a025614c542d1a3
 include:
   - wifi-ax
 packages:
@@ -45,7 +45,6 @@ packages:
   - luci-app-watchcat
   - luci-app-ramfree
   - luci-app-eqos
-  - luci-app-sqm
   - luci-app-accesscontrol
   - luci-app-arpbind
   - luci-app-upnp
