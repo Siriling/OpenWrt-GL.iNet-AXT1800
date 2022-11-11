@@ -20,7 +20,7 @@ feeds:
   - name: NueXini_Packages
     uri: https://github.com/NueXini/NueXini_Packages.git
     branch: main
-    revision: 6ff8cf1eb2db0175be62cc4de5b9ee9857794303
+    revision: 24a27b0e2c30565bbdb3d11cd4bf086a1421f9e9
 include:
   - wifi-ax
 packages:
@@ -52,6 +52,7 @@ packages:
   - luci-app-ddns
   - luci-app-wol
   - luci-app-autoreboot
+  - luci-app-mwan3helper
   - luci-app-fileassistant
   - luci-theme-argon
   - luci-app-argon-config
