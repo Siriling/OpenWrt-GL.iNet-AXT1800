@@ -11,18 +11,18 @@ feeds:
     path: ../../feeds/wifi-ax
   - name: gl_feeds_common
     uri: https://github.com/gl-inet/gl-feeds.git
-    revision: ca7c1c54636ea521b1452c443e1a0bb4deb41990
+    revision: 7a2b21a2fe6d5b8a3b15009ca544b8a0f7fc2e1d
   - name: luci
     uri: https://github.com/openwrt/luci.git
     revision: 1c3b32dc1bec15e3076a447762b1c4f94eb75fb7
   - name: immortalwrt_luci
     uri: https://github.com/immortalwrt/luci.git
     branch: openwrt-21.02
-    revision: ca8e423d4db4a6b9ff985f8403b4fb40cec23ba2
+    revision: 65fc4e6524c331d13344c5413628e9eff182d875
   - name: NueXini_Packages
     uri: https://github.com/NueXini/NueXini_Packages.git
     branch: main
-    revision: db3209f81549f88736a73e8190523b85958d8854
+    revision: 02fbac1040761a772e4b983cd8cc3935b421e809
 include: []
 packages:
   - kmod-hwmon-pwmfan
@@ -55,7 +55,7 @@ packages:
   - luci-app-ddns
   - luci-app-wol
   - luci-app-autoreboot
-  - luci-app-mwan3helper
+  - luci-app-commands
   - luci-app-fileassistant
   - luci-theme-argon
   - luci-app-argon-config
