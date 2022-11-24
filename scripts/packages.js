@@ -120,9 +120,13 @@
     desc: '支持计划重启',
   },
   {
-  name: 'luci-app-mwan3helper',
-  desc: '负载均衡',
+  name: 'luci-app-commands',
+  desc: '自定义命令',
   },
+  // {
+  // name: 'luci-app-mwan3helper',
+  // desc: '负载均衡',
+  // },
   // {
   //   name: 'luci-app-homebox',
   //   desc: '内网测速',
