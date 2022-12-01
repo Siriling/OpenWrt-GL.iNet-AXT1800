@@ -16,11 +16,11 @@ feeds:
   - name: immortalwrt_luci
     uri: https://github.com/immortalwrt/luci.git
     branch: openwrt-21.02
-    revision: 1c6875beb8f31fe93d515916ffb91015ea030060
+    revision: 2dfd2801eb31fe5e4503228f0942bdd8fad6593f
   - name: NueXini_Packages
     uri: https://github.com/NueXini/NueXini_Packages.git
     branch: main
-    revision: 6903cf35224ee52a19a305f7a0603e120751f230
+    revision: 5e1898ba6c03f2e3ab1d1e5baa9646c37ac12cfe
 include:
   - wifi-ax
 packages:
