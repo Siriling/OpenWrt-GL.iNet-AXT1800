@@ -22,7 +22,7 @@ feeds:
   - name: NueXini_Packages
     uri: https://github.com/NueXini/NueXini_Packages.git
     branch: main
-    revision: 481affbcdceed4caa028de3e6a69da5e233dddb1
+    revision: 41846c26093cafe7eccee8432485c3199ede67d9
 include: []
 packages:
   - kmod-hwmon-pwmfan
@@ -56,6 +56,7 @@ packages:
   - luci-app-wol
   - luci-app-autoreboot
   - luci-app-commands
+  - luci-app-sms-tool
   - luci-app-fileassistant
   - luci-theme-argon
   - luci-app-argon-config
