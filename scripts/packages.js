@@ -120,8 +120,12 @@
     desc: '支持计划重启',
   },
   {
-  name: 'luci-app-commands',
-  desc: '自定义命令',
+    name: 'luci-app-commands',
+    desc: '自定义命令',
+  },
+  {
+    name: 'luci-app-sms-tool',
+    desc: '4G/5G模组短信工具',
   },
   // {
   // name: 'luci-app-mwan3helper',
