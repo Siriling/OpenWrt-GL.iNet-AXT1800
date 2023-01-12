@@ -22,10 +22,11 @@ feeds:
   - name: NueXini_Packages
     uri: https://github.com/NueXini/NueXini_Packages.git
     branch: main
-    revision: bddfeb8d73a791e238ee8c12a03813284d3efc12
+    revision: 4d3a90ca9fb55791b5d2d4d65f702d55a960668d
 include: []
 packages:
   - kmod-hwmon-pwmfan
+  - kmod-gl-sdk4-fan
   - wireless-regdb
   - wget-ssl
   - kmod-wireguard-backport
