@@ -35,8 +35,6 @@ const exec = require('child_process').execSync;
  const GenerateFeedsConfig = (name, uri, branch) => {
   exec(`git clone --depth=1 ${uri} -b ${branch} ${name}`);
   const revision = exec(`cd ${name} && git log -1 --pretty=%H`).toString().trim();
-  exec(`cd ..`);
-  exec(`rm -rf ${name}`);
   return {
     name: name.trim(),
     uri: uri.trim(),
@@ -73,9 +71,13 @@ const GenerateYml = (workflows) => {
     workflows.forEach(workflow => {
       // 读取官方配置文件
       let profilesYml = yaml.load(fs.readFileSync(`${glInfraBuilder}/profiles/${workflow.target}.yml`, 'utf8'));
+      // 读取config配置文件
+      const configYml = yaml.load(fs.readFileSync(`${glInfraBuilder}/configs/${workflow.config}.yml`, 'utf8'));
+      const openwrt_root_dir = configYml.openwrt_root_dir;
+
       // 获取 include 列表
       const include = profilesYml.include;
-      if(include.length > 0) {
+      if(include && include.length > 0) {
         profilesYml.include = [];
         include.forEach(include => {
           // 读取 include 配置文件
@@ -83,7 +85,6 @@ const GenerateYml = (workflows) => {
           // 合并 include 配置文件
           profilesYml = deepmerge(profilesYml, includeYml);
         });
-
       }
       // 合并 feeds 配置
       profilesYml = deepmerge(profilesYml, { feeds });
@@ -108,9 +109,9 @@ const GenerateYml = (workflows) => {
       template = template.replace(/\$\{build\}/g, build);
       template = template.replace(/\$\{model\}/g, workflow.model);
       template = template.replace(/\$\{config\}/g, workflow.config);
+      template = template.replace(/\$\{official\}/g, workflow.official);
       template = template.replace(/\$\{modelUpper\}/g, workflow.model.toUpperCase());
       template = template.replace(/\$\{releaseTitle\}/g, `## 📦‍ 固件下载 | ${workflowName.replace('build-', '').toUpperCase().replace(/-/g, ' ')}`);
-      template = template.replace(/\$\{releaseReadme\}/g, `## 📜 固件说明`);
       template = template.replace(/\$\{releasePackages\}/g, JSON.stringify([
         `## ✨ 主要功能`,
         ...packagesDesc
@@ -128,6 +129,7 @@ const GenerateYml = (workflows) => {
   } finally {
      // 清理文件
      exec(`rm -rf gl-infra-builder`);
+     require('./feeds').forEach(item => exec(`rm -rf ${item.name}`));
      exec(`rm -rf node_modules`);
      exec(`rm -rf package-lock.json`);
      exec(`rm -rf package.json`);
