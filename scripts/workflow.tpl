@@ -174,7 +174,10 @@ jobs:
         echo "::set-output name=release_tag::${modelUpper}-$(date +"%Y.%m.%d-%H.%M")"
         touch release.txt
         echo "${releaseTitle}" >> release.txt
-        [ $UPLOAD_WETRANSFER = true ] && echo "- 🔗 [WeTransfer](${{ steps.wetransfer.outputs.url }})" >> release.txt
+        [ $UPLOAD_WETRANSFER = true ] && echo "- 🚀 [点我快速下载](${{ steps.wetransfer.outputs.url }})" >> release.txt
+        echo "${releaseReadme}" >> release.txt
+        [ $UPLOAD_WETRANSFER = true ] && echo "- 🔗 后台地址：192.168.8.1" >> release.txt
+        [ $UPLOAD_WETRANSFER = true ] && echo "- 🌐 WiFi名称：GL-AXT1800-2.4GHz和GL-AXT1800-5GHz" >> release.txt
         echo -e ${releasePackages} >> release.txt
         echo "::set-output name=status::success"
 
