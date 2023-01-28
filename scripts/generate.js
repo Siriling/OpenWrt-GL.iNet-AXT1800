@@ -115,6 +115,9 @@ const GenerateYml = (workflows) => {
         `## ✨ 主要功能`,
         ...packagesDesc
       ].join('\n')));
+      template = template.replace(/\$\{openwrt_root_dir\}/g, openwrt_root_dir);
+      template = template.replace(/\$\{target\}/g, profilesYml.target);
+      template = template.replace(/\$\{subtarget\}/g, profilesYml.subtarget);
       template = template.replace(/\$\{length\}/g, workflows.length);
       // 写入workflow
       const workflowsPath = path.resolve(process.cwd(), '.github/workflows', `${workflowName}.yml`);

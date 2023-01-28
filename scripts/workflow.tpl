@@ -37,6 +37,7 @@ env:
   UPLOAD_WETRANSFER: true
   UPLOAD_RELEASE: true
   TZ: Asia/Shanghai
+  OFFICIAL: ${official}
 
 jobs:
   build:
@@ -69,7 +70,8 @@ jobs:
         cd $GITHUB_WORKSPACE
         [ -e ${build}.yml ] && mv ${build}.yml /workdir/gl-infra-builder/profiles
 
-    - name: run setup.py
+    - name: run official setup.py
+      if: env.OFFICIAL == 'true'
       run: |
         cd /workdir/gl-infra-builder
         git config --global user.name "github-actions[bot]"
