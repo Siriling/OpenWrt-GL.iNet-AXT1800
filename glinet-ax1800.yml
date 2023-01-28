@@ -11,33 +11,39 @@ feeds:
     path: ../../feeds/wifi-ax
   - name: gl_feeds_common
     uri: https://github.com/gl-inet/gl-feeds.git
-    revision: c3c61a5e480a44e90389fe37d7d0f07938139ada
+    revision: f86ec7f77b7a36c96a9b5a9b7fea30ccc9ac5fe6
   - name: luci
     uri: https://github.com/openwrt/luci.git
     revision: 1c3b32dc1bec15e3076a447762b1c4f94eb75fb7
+  - name: kenzok8_packages
+    uri: https://github.com/kenzok8/openwrt-packages.git
+    branch: master
+    revision: 5b5d40b3dd2a0aaa026eac3e18e27d33a7e36718
   - name: immortalwrt_luci
     uri: https://github.com/immortalwrt/luci.git
     branch: openwrt-21.02
-    revision: b51686093da7a4542f905e41e94a63823cedb793
-  - name: NueXini_Packages
-    uri: https://github.com/NueXini/NueXini_Packages.git
+    revision: c5368bfd22c06efee69b9cf8a6e28a0f31b83100
+  - name: small_package
+    uri: https://github.com/kenzok8/small-package.git
     branch: main
-    revision: 3ac1f1f1060f96ab9a03aaf2e9b2a95e5e6ea8bc
+    revision: ac34e1abe422cb32c3d0de1243c7cad222b8c0d0
 include: []
 packages:
   - wireless-regdb
   - wget-ssl
   - kmod-wireguard-backport
-  - luci-app-netdata
-  - luci-app-ttyd
-  - luci-app-nlbwmon
-  - luci-app-wrtbwmon
-  - luci-app-diskman
-  - luci-app-arpbind
-  - luci-app-upnp
   - luci-theme-argon
   - luci-app-argon-config
+  - luci-app-ramfree
+  - luci-app-wol
+  - luci-app-diskman
+  - luci-app-smartdns
   - luci-app-openclash
-  - luci-app-openvpn
+  - luci-app-aria2
   - luci-app-zerotier
-  - luci-app-adguardhome
+  - luci-app-turboacc
+  - luci-app-xlnetacc
+  - luci-app-cpufreq
+  - luci-app-ttyd
+  - luci-app-serverchan
+  - luci-app-transmission

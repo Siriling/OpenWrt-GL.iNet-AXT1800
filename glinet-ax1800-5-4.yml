@@ -13,54 +13,34 @@ feeds:
   - name: luci
     uri: https://github.com/openwrt/luci.git
     revision: 1c3b32dc1bec15e3076a447762b1c4f94eb75fb7
+  - name: kenzok8_packages
+    uri: https://github.com/kenzok8/openwrt-packages.git
+    branch: master
+    revision: cde9b3f918c1d2e9b5283305b9f855f44787cd92
   - name: immortalwrt_luci
     uri: https://github.com/immortalwrt/luci.git
     branch: openwrt-21.02
-    revision: 60ab741c0da35c9b2781baeb4d133475e637eeb1
-  - name: NueXini_Packages
-    uri: https://github.com/NueXini/NueXini_Packages.git
+    revision: 2122588ed5b0637e0f4f50de359925f6e0f60bd2
+  - name: small_package
+    uri: https://github.com/kenzok8/small-package.git
     branch: main
-    revision: 63a9945b9a5eb7664f020f94ebf3716e34bd7dc3
+    revision: fbcc7be7968c36fd6c6958a35e798d18d93d4733
 include:
   - wifi-ax
 packages:
   - wget-ssl
-  - kmod-usb-ledtrig-usbport
-  - kmod-usb-net-cdc-mbim
-  - kmod-usb-net-sierrawireless
-  - usbutils
-  - minicom
-  - procps-ng
-  - procps-ng-ps
-  - grep
-  - lsblk
-  - fdisk
-  - cfdisk
-  - luci-app-netdata
-  - luci-app-ttyd
-  - luci-app-nlbwmon
-  - luci-app-wrtbwmon
-  - luci-app-diskman
-  - luci-app-watchcat
-  - luci-app-ramfree
-  - luci-app-eqos
-  - luci-app-sqm
-  - luci-app-accesscontrol
-  - luci-app-arpbind
-  - luci-app-upnp
-  - luci-app-firewall
-  - luci-app-ddns
-  - luci-app-wol
-  - luci-app-autoreboot
-  - luci-app-fileassistant
   - luci-theme-argon
   - luci-app-argon-config
-  - luci-app-ssr-plus
+  - luci-app-ramfree
+  - luci-app-wol
+  - luci-app-diskman
+  - luci-app-smartdns
   - luci-app-openclash
+  - luci-app-aria2
   - luci-app-zerotier
-  - luci-app-openvpn
-  - luci-app-unblockmusic
-  - luci-app-pushbot
-  - luci-app-aliyundrive-webdav
   - luci-app-turboacc
-  - luci-app-uugamebooster
+  - luci-app-xlnetacc
+  - luci-app-cpufreq
+  - luci-app-ttyd
+  - luci-app-serverchan
+  - luci-app-transmission

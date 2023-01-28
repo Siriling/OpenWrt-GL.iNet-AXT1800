@@ -41,7 +41,7 @@ env:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
 
     steps:
     - name: Checkout
@@ -53,7 +53,7 @@ jobs:
       run: |
         sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc
         sudo -E apt-get -qq update
-        sudo -E apt-get -qq install build-essential libncurses5-dev gawk git libssl-dev gettext zlib1g-dev swig unzip time rsync python3 python3-setuptools python3-yaml -y
+        sudo -E apt-get -qq install python build-essential libncurses5-dev gawk git libssl-dev gettext zlib1g-dev swig unzip time rsync python3 python3-setuptools python3-yaml subversion -y
         sudo -E apt-get -qq autoremove --purge
         sudo -E apt-get -qq clean
         sudo timedatectl set-timezone "$TZ"
@@ -77,26 +77,27 @@ jobs:
         git config --global user.name "github-actions[bot]"
         git config --global user.email "github-actions[bot]@github.com"
         python3 setup.py -c configs/${config}.yml
-
-    - name: Download package
-      id: package
-      run: |
-        cd /workdir/gl-infra-builder/wlan-ap/openwrt
+        cd /workdir/gl-infra-builder/${openwrt_root_dir}
         ./scripts/gen_config.py ${build} glinet_depends
-        git clone https://github.com/gl-inet/glinet4.x.git -b main /workdir/glinet
-        
-        cp -r ~/work/OpenWrt-GL.iNet-AXT1800/OpenWrt-GL.iNet-AXT1800/etc/ ./package/base-files/files
-        echo "$(date +"%Y.%m.%d")" >./package/base-files/files/etc/glversion
-        echo " Bulid By@shejiewu " >./package/base-files/files/etc/version.type
-        ./scripts/feeds update luci
-        ./scripts/feeds install -a -p luci
+          git clone https://github.com/gl-inet/glinet4.x.git -b main /workdir/glinet
+        ./scripts/feeds update -a
+        ./scripts/feeds install -a
         make defconfig
+        cd /workdir/gl-infra-builder/${openwrt_root_dir}/files/etc
+        echo "$(date +"%Y.%m.%d")" >./glversion
 
-      #  ./scripts/feeds update -a
-      #  ./scripts/feeds install -a
-      #  make defconfig
-      #  cd /workdir/gl-infra-builder/wlan-ap/openwrt/files/etc
-      #  echo "$(date +"%Y.%m.%d")" >./glversion
+    - name: run setup.py
+      if: env.OFFICIAL == 'false'
+      run: |
+        cd /workdir/gl-infra-builder
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "github-actions[bot]@github.com"
+        python3 setup.py -c configs/${config}.yml
+        cd /workdir/gl-infra-builder/${openwrt_root_dir}
+        ./scripts/gen_config.py ${build} openwrt_common luci
+        ./scripts/feeds update -a
+        ./scripts/feeds install -a
+        make defconfig
 
     - name: SSH connection to Actions
       uses: P3TERX/ssh2actions@v1.0.0
@@ -105,12 +106,25 @@ jobs:
         TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
 
+    - name: Official compile the firmware
+      id: official-compile
+      if: env.OFFICIAL == 'true'
+      run: |
+        cd /workdir/gl-infra-builder/${openwrt_root_dir}
+        echo -e "$(nproc) thread compile"
+        make -j$(expr $(nproc) + 1) GL_PKGDIR=/workdir/glinet/${subtarget}/ V=s
+        echo "::set-output name=status::success"
+        grep '^CONFIG_TARGET.*DEVICE.*=y' .config | sed -r 's/.*DEVICE_(.*)=y/\1/' > DEVICE_NAME
+        [ -s DEVICE_NAME ] && echo "DEVICE_NAME=_$(cat DEVICE_NAME)" >> $GITHUB_ENV
+        echo "FILE_DATE=_$(date +"%Y%m%d%H%M")" >> $GITHUB_ENV
+
     - name: Compile the firmware
       id: compile
+      if: env.OFFICIAL == 'false'
       run: |
-        cd /workdir/gl-infra-builder/wlan-ap/openwrt
+        cd /workdir/gl-infra-builder/${openwrt_root_dir}
         echo -e "$(nproc) thread compile"
-        make -j$(expr $(nproc) + 1) GL_PKGDIR=/workdir/glinet/ipq60xx/ V=s
+        make -j$(expr $(nproc) + 1)  V=s
         echo "::set-output name=status::success"
         grep '^CONFIG_TARGET.*DEVICE.*=y' .config | sed -r 's/.*DEVICE_(.*)=y/\1/' > DEVICE_NAME
         [ -s DEVICE_NAME ] && echo "DEVICE_NAME=_$(cat DEVICE_NAME)" >> $GITHUB_ENV
@@ -125,13 +139,13 @@ jobs:
       if: steps.compile.outputs.status == 'success' && env.UPLOAD_BIN_DIR == 'true'
       with:
         name: OpenWrt_bin${{ env.DEVICE_NAME }}${{ env.FILE_DATE }}
-        path: /workdir/gl-infra-builder/wlan-ap/openwrt/bin
+        path: /workdir/gl-infra-builder/${openwrt_root_dir}/bin
 
     - name: Organize files
       id: organize
       if: env.UPLOAD_FIRMWARE == 'true' && !cancelled() && !failure()
       run: |
-        cd /workdir/gl-infra-builder/wlan-ap/openwrt/bin/targets/ipq807x/ipq60xx
+        cd /workdir/gl-infra-builder/${openwrt_root_dir}/bin/targets/${target}/${subtarget}
         echo $PWD
         rm -rf packages
         echo "FIRMWARE=$PWD" >> $GITHUB_ENV
@@ -160,10 +174,7 @@ jobs:
         echo "::set-output name=release_tag::${modelUpper}-$(date +"%Y.%m.%d-%H.%M")"
         touch release.txt
         echo "${releaseTitle}" >> release.txt
-        [ $UPLOAD_WETRANSFER = true ] && echo "- 🚀 [点我快速下载](${{ steps.wetransfer.outputs.url }})" >> release.txt
-        echo "${releaseReadme}" >> release.txt
-        [ $UPLOAD_WETRANSFER = true ] && echo "- 🔗 后台地址：192.168.8.1" >> release.txt
-        [ $UPLOAD_WETRANSFER = true ] && echo "- 🌐 WiFi名称：GL-AXT1800-2.4GHz和GL-AXT1800-5GHz" >> release.txt
+        [ $UPLOAD_WETRANSFER = true ] && echo "- 🔗 [WeTransfer](${{ steps.wetransfer.outputs.url }})" >> release.txt
         echo -e ${releasePackages} >> release.txt
         echo "::set-output name=status::success"
 
