@@ -235,20 +235,20 @@
   //   name: 'luci-app-unblockneteasemusic',
   //   desc: '解锁网易云NodeJS版本',
   // },
-  // {
-  //   name: 'luci-app-pushbot',
-  //   desc: '全能推送（钉钉推送，企业微信推送，Bark，PushPlus推送）',
-  // },
-  // {
-  //   name: 'luci-app-aliyundrive-webdav',
-  //   desc: '阿里云盘WebDAV服务',
-  // },
+  {
+    name: 'luci-app-pushbot',
+    desc: '全能推送（钉钉推送，企业微信推送，Bark，PushPlus推送）',
+  },
+  {
+    name: 'luci-app-aliyundrive-webdav',
+    desc: '阿里云盘WebDAV服务',
+  },
   {
     name: 'luci-app-turboacc',
     desc: 'Turbo ACC 网络加速(支持Fast Path或者硬件NAT)',
   },
-  // {
-  //   name: 'luci-app-uugamebooster',
-  //   desc: 'UU网游加速器',
-  // },
+  {
+    name: 'luci-app-uugamebooster',
+    desc: 'UU网游加速器',
+  },
 ];
