@@ -7,52 +7,52 @@
  module.exports = [
 
   //依赖
-  // {
-  //    name: 'kmod-usb-ledtrig-usbport',
-  //    desc: 'kmod-usb-ledtrig-usbport',
-  // },
-  // {
-  //   name: 'kmod-usb-net-cdc-mbim',
-  //   desc: 'kmod-usb-net-cdc-mbim',
-  // },
-  // {
-  //   name: 'kmod-usb-net-sierrawireless',
-  //   desc: 'kmod-usb-net-sierrawireless',
-  // },
+  {
+     name: 'kmod-usb-ledtrig-usbport',
+     desc: 'kmod-usb-ledtrig-usbport',
+  },
+  {
+    name: 'kmod-usb-net-cdc-mbim',
+    desc: 'kmod-usb-net-cdc-mbim',
+  },
+  {
+    name: 'kmod-usb-net-sierrawireless',
+    desc: 'kmod-usb-net-sierrawireless',
+  },
   
   //工具
-  // {
-  //   name: 'usbutils',
-  //   desc: 'usbutils',
-  // },
-  // {
-  //   name: 'minicom',
-  //   desc: 'minicom',
-  // },
-  // {
-  //   name: 'procps-ng',
-  //   desc: 'procps-ng',
-  // },
-  // {
-  //   name: 'procps-ng-ps',
-  //   desc: 'procps-ng-ps',
-  // },
-  // {
-  //   name: 'grep',
-  //   desc: 'grep',
-  // },
-  // {
-  //   name: 'lsblk',
-  //   desc: 'lsblk',
-  // },
-  // {
-  //   name: 'fdisk',
-  //   desc: 'fdisk',
-  // },
-  // {
-  //   name: 'cfdisk',
-  //   desc: 'cfdisk',
-  // },
+  {
+    name: 'usbutils',
+    desc: 'usbutils',
+  },
+  {
+    name: 'minicom',
+    desc: 'minicom',
+  },
+  {
+    name: 'procps-ng',
+    desc: 'procps-ng',
+  },
+  {
+    name: 'procps-ng-ps',
+    desc: 'procps-ng-ps',
+  },
+  {
+    name: 'grep',
+    desc: 'grep',
+  },
+  {
+    name: 'lsblk',
+    desc: 'lsblk',
+  },
+  {
+    name: 'fdisk',
+    desc: 'fdisk',
+  },
+  {
+    name: 'cfdisk',
+    desc: 'cfdisk',
+  },
   
   //系统相关
   {
@@ -107,10 +107,10 @@
     name: 'luci-app-firewall',
     desc: '添加防火墙',
   },
-  // {
-  //   name: 'luci-app-ddns',
-  //   desc: '动态域名（DDNS）',
-  // },
+  {
+    name: 'luci-app-ddns',
+    desc: '动态域名（DDNS）',
+  },
   {
     name: 'luci-app-wol',
     desc: 'WOL网络唤醒',
@@ -123,10 +123,10 @@
     name: 'luci-app-commands',
     desc: '自定义命令',
   },
-  // {
-  //   name: 'luci-app-sms-tool',
-  //   desc: '4G/5G模组短信工具',
-  // },
+  {
+    name: 'luci-app-sms-tool',
+    desc: '4G/5G模组短信工具',
+  },
   // {
   // name: 'luci-app-mwan3helper',
   // desc: '负载均衡',
@@ -243,10 +243,10 @@
   //   name: 'luci-app-aliyundrive-webdav',
   //   desc: '阿里云盘WebDAV服务',
   // },
-  // {
-  //   name: 'luci-app-turboacc',
-  //   desc: 'Turbo ACC 网络加速(支持Fast Path或者硬件NAT)',
-  // },
+  {
+    name: 'luci-app-turboacc',
+    desc: 'Turbo ACC 网络加速(支持Fast Path或者硬件NAT)',
+  },
   // {
   //   name: 'luci-app-uugamebooster',
   //   desc: 'UU网游加速器',
