@@ -30,6 +30,17 @@ packages:
   - wireless-regdb
   - wget-ssl
   - kmod-wireguard-backport
+  - kmod-usb-ledtrig-usbport
+  - kmod-usb-net-cdc-mbim
+  - kmod-usb-net-sierrawireless
+  - usbutils
+  - minicom
+  - procps-ng
+  - procps-ng-ps
+  - grep
+  - lsblk
+  - fdisk
+  - cfdisk
   - luci-app-netdata
   - luci-app-ttyd
   - luci-app-nlbwmon
@@ -42,9 +53,11 @@ packages:
   - luci-app-arpbind
   - luci-app-upnp
   - luci-app-firewall
+  - luci-app-ddns
   - luci-app-wol
   - luci-app-autoreboot
   - luci-app-commands
+  - luci-app-sms-tool
   - luci-app-fileassistant
   - luci-theme-argon
   - luci-app-argon-config
@@ -52,3 +65,4 @@ packages:
   - luci-app-zerotier
   - luci-app-openvpn
   - luci-app-unblockmusic
+  - luci-app-turboacc
