@@ -163,10 +163,10 @@
   //   name: 'luci-app-bypass',
   //   desc: 'Bypass代理',
   // },
-  // {
-  //   name: 'luci-app-ssr-plus',
-  //   desc: 'SSR Plus+代理',
-  // },
+  {
+    name: 'luci-app-ssr-plus',
+    desc: 'SSR Plus+代理',
+  },
   // {
   //   name: 'luci-app-passwall',
   //   desc: 'Passwall代理',
