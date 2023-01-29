@@ -63,4 +63,7 @@ packages:
   - luci-app-zerotier
   - luci-app-openvpn
   - luci-app-unblockmusic
+  - luci-app-pushbot
+  - luci-app-aliyundrive-webdav
   - luci-app-turboacc
+  - luci-app-uugamebooster
