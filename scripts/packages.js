@@ -247,8 +247,8 @@
     name: 'luci-app-turboacc',
     desc: 'Turbo ACC 网络加速(支持Fast Path或者硬件NAT)',
   },
-  {
-    name: 'luci-app-uugamebooster',
-    desc: 'UU网游加速器',
-  },
+  // {
+  //   name: 'luci-app-uugamebooster',
+  //   desc: 'UU网游加速器',
+  // },
 ];

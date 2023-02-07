@@ -36,16 +36,16 @@
   //   uri: 'https://github.com/jerrykuku/luci-app-jd-dailybonus',
   //   branch: 'master',
   // },
-  // {
-  //   name: 'kiddin9_packages',
-  //   uri: 'https://github.com/kiddin9/openwrt-packages.git',
-  //   branch: 'master',
-  // },
   {
-    name: 'NueXini_Packages',
-    uri: 'https://github.com/NueXini/NueXini_Packages.git',
-    branch: 'main',
+    name: 'kiddin9_packages',
+    uri: 'https://github.com/kiddin9/openwrt-packages.git',
+    branch: 'master',
   },
+  // {
+  //   name: 'NueXini_Packages',
+  //   uri: 'https://github.com/NueXini/NueXini_Packages.git',
+  //   branch: 'main',
+  // },
   // {
   //   name: 'kenzok8_packages',
   //   uri: 'https://github.com/kenzok8/openwrt-packages.git',
