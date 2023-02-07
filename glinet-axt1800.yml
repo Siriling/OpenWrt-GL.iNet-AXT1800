@@ -18,11 +18,11 @@ feeds:
   - name: immortalwrt_luci
     uri: https://github.com/immortalwrt/luci.git
     branch: openwrt-21.02
-    revision: 8ac8ffae6694c73a9808e90cd9750b0450abc665
-  - name: NueXini_Packages
-    uri: https://github.com/NueXini/NueXini_Packages.git
-    branch: main
-    revision: 17b9ac8a0e926e55aed99e75d8857e9a1eaa79f2
+    revision: bfbb9d3e68d889601c14d8a7f7e13be1ddf39128
+  - name: kiddin9_packages
+    uri: https://github.com/kiddin9/openwrt-packages.git
+    branch: master
+    revision: 54a0c1e49618812794f3e3ebb3c3e3dbc7f9abd1
 include: []
 packages:
   - kmod-hwmon-pwmfan
@@ -68,4 +68,3 @@ packages:
   - luci-app-pushbot
   - luci-app-aliyundrive-webdav
   - luci-app-turboacc
-  - luci-app-uugamebooster
