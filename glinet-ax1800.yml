@@ -19,10 +19,10 @@ feeds:
     uri: https://github.com/immortalwrt/luci.git
     branch: openwrt-21.02
     revision: bfbb9d3e68d889601c14d8a7f7e13be1ddf39128
-  - name: kiddin9_packages
-    uri: https://github.com/kiddin9/openwrt-packages.git
-    branch: master
-    revision: 54a0c1e49618812794f3e3ebb3c3e3dbc7f9abd1
+  - name: NueXini_Packages
+    uri: https://github.com/NueXini/NueXini_Packages.git
+    branch: main
+    revision: 69733eb1cc4fed5f61fe2d152bbc2fbce46589bb
 include: []
 packages:
   - wireless-regdb
