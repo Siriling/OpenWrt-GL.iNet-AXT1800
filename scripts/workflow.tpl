@@ -79,12 +79,14 @@ jobs:
         python3 setup.py -c configs/${config}.yml
         cd /workdir/gl-infra-builder/${openwrt_root_dir}
         ./scripts/gen_config.py ${build} glinet_depends
-          git clone https://github.com/gl-inet/glinet4.x.git -b main /workdir/glinet
+        git clone https://github.com/gl-inet/glinet4.x.git -b main /workdir/glinet
+        cp -r ~/work/OpenWrt-GL.iNet-AXT1800/OpenWrt-GL.iNet-AXT1800/etc/ ./package/base-files/files
         ./scripts/feeds update -a
         ./scripts/feeds install -a
         make defconfig
         cd /workdir/gl-infra-builder/${openwrt_root_dir}/files/etc
         echo "$(date +"%Y.%m.%d")" >./glversion
+        echo " Bulid By@Siriling " >./version.type
 
     - name: run setup.py
       if: env.OFFICIAL == 'false'
