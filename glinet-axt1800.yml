@@ -5,24 +5,27 @@ subtarget: ipq60xx
 description: Build image for the GL.iNET AXT1800
 image: bin/targets/ipq807x/ipq60xx/openwrt-ipq807x-glinet_axt1800-squashfs-sysupgrade.tar
 feeds:
+  - name: gl_feeds_wlanap
+    uri: https://github.com/gl-inet/gl-feeds.git
+    revision: 5df1bae20bf4f2bd39168707e6363bcf8bdf5f29
   - name: ipq807x
     path: ../../feeds/ipq807x
   - name: wifi_ax
     path: ../../feeds/wifi-ax
   - name: gl_feeds_common
     uri: https://github.com/gl-inet/gl-feeds.git
-    revision: 7862f3fcc179e0143a9e7af9c6f53893dc06300e
+    revision: 16d4e89ddfc13ab8551959c3c17dfe7699c709bf
   - name: luci
     uri: https://github.com/openwrt/luci.git
     revision: 1c3b32dc1bec15e3076a447762b1c4f94eb75fb7
   - name: immortalwrt_luci
     uri: https://github.com/immortalwrt/luci.git
     branch: openwrt-21.02
-    revision: fcb3f507817deb1a98477f8e33a519e4caebd103
+    revision: b0cd0d4b26dfbc5381a436f2efcc2d79f1a84062
   - name: NueXini_Packages
     uri: https://github.com/NueXini/NueXini_Packages.git
     branch: main
-    revision: de34f7035424b8b1f62cf31b503d1d11a817d5b6
+    revision: 42f615f9c7bcbc6533474faed71c86c8be6c1ee1
 include: []
 packages:
   - kmod-hwmon-pwmfan
