@@ -175,11 +175,11 @@ jobs:
       run: |
         echo "::set-output name=release_tag::AXT1800-$(date +"%Y.%m.%d-%H.%M")"
         touch release.txt
-        echo "## 📦‍ 固件下载 | GLINET AXT1800" >> release.txt
+        echo "## 🗒️ 固件信息" >> release.txt
         [ $UPLOAD_WETRANSFER = true ] && echo "- 🚀 [点我快速下载](${{ steps.wetransfer.outputs.url }})" >> release.txt
-        echo "${releaseReadme}" >> release.txt
-        [ $UPLOAD_WETRANSFER = true ] && echo "- 🔗 后台地址：192.168.8.1" >> release.txt
-        [ $UPLOAD_WETRANSFER = true ] && echo "- 🌐 WiFi名称：GL-AXT1800-2.4GHz和GL-AXT1800-5GHz" >> release.txt
+        echo "- 🔗 后台地址：192.168.8.1" >> release.txt
+        echo "- 🌐 2.4G WiFi名称：AXT1800-2.4GHz" >> release.txt
+        echo "- 🌐 5G WiFi名称：AXT1800-5GHz" >> release.txt
         echo -e "## ✨ 主要功能\n1. kmod-usb-ledtrig-usbport\n2. kmod-usb-net-cdc-mbim\n3. kmod-usb-net-sierrawireless\n4. usbutils\n5. minicom\n6. procps-ng\n7. procps-ng-ps\n8. grep\n9. lsblk\n10. fdisk\n11. cfdisk\n12. Netdata实时监控\n13. 网页终端命令行\n14. 网络带宽监视器\n15. 实时流量监测\n16. 磁盘管理工具\n17. 断网检测功能与定时重启\n18. 释放内存\n19. 基于IP地址限速\n20. 访问时间控制\n21. IP/MAC绑定\n22. 通用即插即用UPnP（端口自动转发）\n23. 添加防火墙\n24. 动态域名（DDNS）\n25. WOL网络唤醒\n26. 支持计划重启\n27. 自定义命令\n28. 4G/5G模组短信工具\n29. 文件管理助手\n30. Argon主题\n31. Argon主题设置\n32. Clash代理\n33. ZeroTier内网穿透\n34. OpenVPN客户端\n35. 解锁网易云灰色歌曲3合1新版本\n36. 全能推送（钉钉推送，企业微信推送，Bark，PushPlus推送）\n37. 阿里云盘WebDAV服务\n38. Turbo ACC 网络加速(支持Fast Path或者硬件NAT)" >> release.txt
         echo "::set-output name=status::success"
 
@@ -187,8 +187,9 @@ jobs:
       uses: softprops/action-gh-release@v1
       if: steps.tag.outputs.status == 'success' && !cancelled() && !failure()
       env:
-        GITHUB_TOKEN: ${{ secrets.AC_GH_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.REPO_TOKEN }}
       with:
+        name: 📦‍ 固件下载 | AXT1800 | $(date +"%Y.%m.%d-%H.%M")
         tag_name: ${{ steps.tag.outputs.release_tag }}
         body_path: release.txt
         files: ${{ env.FIRMWARE }}/*
@@ -206,4 +207,4 @@ jobs:
         keep_latest: 2
         delete_tags: true
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.REPO_TOKEN }}
