@@ -175,11 +175,11 @@ jobs:
       run: |
         echo "::set-output name=release_tag::${modelUpper}-$(date +"%Y.%m.%d-%H.%M")"
         touch release.txt
-        echo "${releaseTitle}" >> release.txt
+        echo "## 🗒️ 固件信息" >> release.txt
         [ $UPLOAD_WETRANSFER = true ] && echo "- 🚀 [点我快速下载](${{ steps.wetransfer.outputs.url }})" >> release.txt
-        echo "${releaseReadme}" >> release.txt
-        [ $UPLOAD_WETRANSFER = true ] && echo "- 🔗 后台地址：192.168.8.1" >> release.txt
-        [ $UPLOAD_WETRANSFER = true ] && echo "- 🌐 WiFi名称：GL-AXT1800-2.4GHz和GL-AXT1800-5GHz" >> release.txt
+        echo "- 🔗 后台地址：192.168.8.1" >> release.txt
+        echo "- 🌐 2.4G WiFi名称：${modelUpper}-2.4GHz" >> release.txt
+        echo "- 🌐 5G WiFi名称：${modelUpper}-5GHz" >> release.txt
         echo -e ${releasePackages} >> release.txt
         echo "::set-output name=status::success"
 
@@ -187,8 +187,9 @@ jobs:
       uses: softprops/action-gh-release@v1
       if: steps.tag.outputs.status == 'success' && !cancelled() && !failure()
       env:
-        GITHUB_TOKEN: ${{ secrets.AC_GH_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.REPO_TOKEN }}
       with:
+        name: 📦‍ 固件下载 | ${modelUpper} | $(date +"%Y.%m.%d-%H.%M")
         tag_name: ${{ steps.tag.outputs.release_tag }}
         body_path: release.txt
         files: ${{ env.FIRMWARE }}/*
@@ -206,4 +207,4 @@ jobs:
         keep_latest: ${length}
         delete_tags: true
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.REPO_TOKEN }}
