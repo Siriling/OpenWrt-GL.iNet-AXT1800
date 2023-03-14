@@ -79,12 +79,14 @@ jobs:
         python3 setup.py -c configs/config-wlan-ap-5.4.yml
         cd /workdir/gl-infra-builder/wlan-ap/openwrt
         ./scripts/gen_config.py glinet-ax1800-5-4 glinet_depends
-          git clone https://github.com/gl-inet/glinet4.x.git -b main /workdir/glinet
+        git clone https://github.com/gl-inet/glinet4.x.git -b main /workdir/glinet
+        cp -r ~/work/OpenWrt-GL.iNet-AXT1800/OpenWrt-GL.iNet-AXT1800/etc/ ./package/base-files/files
         ./scripts/feeds update -a
         ./scripts/feeds install -a
         make defconfig
         cd /workdir/gl-infra-builder/wlan-ap/openwrt/files/etc
         echo "$(date +"%Y.%m.%d")" >./glversion
+        echo " Bulid By@Siriling " >./version.type
 
     - name: run setup.py
       if: env.OFFICIAL == 'false'
@@ -173,17 +175,21 @@ jobs:
       run: |
         echo "::set-output name=release_tag::AX1800-$(date +"%Y.%m.%d-%H.%M")"
         touch release.txt
-        echo "## 📦‍ 固件下载 | GLINET AX1800 5.4" >> release.txt
-        [ $UPLOAD_WETRANSFER = true ] && echo "- 🔗 [WeTransfer](${{ steps.wetransfer.outputs.url }})" >> release.txt
-        echo -e "## ✨ 主要功能\n1. kmod-usb-ledtrig-usbport\n2. kmod-usb-net-cdc-mbim\n3. kmod-usb-net-sierrawireless\n4. usbutils\n5. minicom\n6. procps-ng\n7. procps-ng-ps\n8. grep\n9. lsblk\n10. fdisk\n11. cfdisk\n12. Netdata实时监控\n13. 网页终端命令行\n14. 网络带宽监视器\n15. 实时流量监测\n16. 磁盘管理工具\n17. 断网检测功能与定时重启\n18. 释放内存\n19. 基于IP地址限速\n20. 访问时间控制\n21. IP/MAC绑定\n22. 通用即插即用UPnP（端口自动转发）\n23. 添加防火墙\n24. 动态域名（DDNS）\n25. WOL网络唤醒\n26. 支持计划重启\n27. 自定义命令\n28. 4G/5G模组短信工具\n29. 文件管理助手\n30. Argon主题\n31. Argon主题设置\n32. SSR Plus+代理\n33. Clash代理\n34. ZeroTier内网穿透\n35. OpenVPN客户端\n36. 解锁网易云灰色歌曲3合1新版本\n37. 全能推送（钉钉推送，企业微信推送，Bark，PushPlus推送）\n38. 阿里云盘WebDAV服务\n39. Turbo ACC 网络加速(支持Fast Path或者硬件NAT)\n40. UU网游加速器" >> release.txt
+        echo "## 🗒️ 固件信息" >> release.txt
+        [ $UPLOAD_WETRANSFER = true ] && echo "- 🚀 [点我快速下载](${{ steps.wetransfer.outputs.url }})" >> release.txt
+        echo "- 🔗 后台地址：192.168.8.1" >> release.txt
+        echo "- 🌐 2.4G WiFi名称：AX1800-2.4GHz" >> release.txt
+        echo "- 🌐 5G WiFi名称：AX1800-5GHz" >> release.txt
+        echo -e "## ✨ 主要功能\n1. kmod-usb-ledtrig-usbport\n2. kmod-usb-net-cdc-mbim\n3. kmod-usb-net-sierrawireless\n4. usbutils\n5. minicom\n6. procps-ng\n7. procps-ng-ps\n8. grep\n9. lsblk\n10. fdisk\n11. cfdisk\n12. Netdata实时监控\n13. 网页终端命令行\n14. 网络带宽监视器\n15. 实时流量监测\n16. 磁盘管理工具\n17. 断网检测功能与定时重启\n18. 释放内存\n19. 基于IP地址限速\n20. 访问时间控制\n21. IP/MAC绑定\n22. 通用即插即用UPnP（端口自动转发）\n23. 添加防火墙\n24. 动态域名（DDNS）\n25. WOL网络唤醒\n26. 支持计划重启\n27. 自定义命令\n28. 4G/5G模组短信工具\n29. 文件管理助手\n30. Argon主题\n31. Argon主题设置\n32. Clash代理\n33. ZeroTier内网穿透\n34. OpenVPN客户端\n35. 解锁网易云灰色歌曲3合1新版本\n36. 全能推送（钉钉推送，企业微信推送，Bark，PushPlus推送）\n37. 阿里云盘WebDAV服务\n38. Turbo ACC 网络加速(支持Fast Path或者硬件NAT)" >> release.txt
         echo "::set-output name=status::success"
 
     - name: Upload firmware to release
       uses: softprops/action-gh-release@v1
       if: steps.tag.outputs.status == 'success' && !cancelled() && !failure()
       env:
-        GITHUB_TOKEN: ${{ secrets.AC_GH_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.REPO_TOKEN }}
       with:
+        name: 📦‍ 固件下载 | AX1800 | $(date +"%Y.%m.%d-%H.%M")
         tag_name: ${{ steps.tag.outputs.release_tag }}
         body_path: release.txt
         files: ${{ env.FIRMWARE }}/*
@@ -201,4 +207,4 @@ jobs:
         keep_latest: 4
         delete_tags: true
       env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.REPO_TOKEN }}
