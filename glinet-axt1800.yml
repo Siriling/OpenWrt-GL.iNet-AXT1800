@@ -25,7 +25,7 @@ feeds:
   - name: NueXini_Packages
     uri: https://github.com/NueXini/NueXini_Packages.git
     branch: main
-    revision: 1cf7e3f0f96dc9a046c2e264435ecc845f8cfbc4
+    revision: 856d7b00cb9aaad4ff50fd51a2ecea25ee74be16
 include: []
 packages:
   - kmod-hwmon-pwmfan
@@ -33,6 +33,7 @@ packages:
   - wireless-regdb
   - wget-ssl
   - kmod-wireguard-backport
+  - wpad-openssl
   - kmod-usb-ledtrig-usbport
   - kmod-usb-net-cdc-mbim
   - kmod-usb-net-sierrawireless
@@ -71,3 +72,6 @@ packages:
   - luci-app-pushbot
   - luci-app-aliyundrive-webdav
   - luci-app-turboacc
+diffconfig: |
+  CONFIG_PACKAGE_wpad-basic=n
+  CONFIG_PACKAGE_wpad=n
