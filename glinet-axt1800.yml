@@ -25,7 +25,7 @@ feeds:
   - name: NueXini_Packages
     uri: https://github.com/NueXini/NueXini_Packages.git
     branch: main
-    revision: d39c06a78fe5296818334735f4a1f4b358191573
+    revision: e43000fd380185cdc7fb51648eec9a0478e2fc72
 include: []
 packages:
   - kmod-hwmon-pwmfan
