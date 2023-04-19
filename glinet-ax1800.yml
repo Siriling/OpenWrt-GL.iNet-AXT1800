@@ -21,11 +21,11 @@ feeds:
   - name: immortalwrt_luci
     uri: https://github.com/immortalwrt/luci.git
     branch: openwrt-21.02
-    revision: df719fc8457335633f502a14ac80e8e1916e1490
+    revision: b53743c0071b472c111a2d2895963fc53ed4b8a0
   - name: NueXini_Packages
     uri: https://github.com/NueXini/NueXini_Packages.git
     branch: main
-    revision: b80a20c8c6617609724e527879c233d006dfe190
+    revision: 8f7c0f12b0b505de827dc01bc1facdae9a98646d
 include: []
 packages:
   - wireless-regdb
