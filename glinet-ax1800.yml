@@ -25,7 +25,7 @@ feeds:
   - name: NueXini_Packages
     uri: https://github.com/NueXini/NueXini_Packages.git
     branch: main
-    revision: 455423bfdb1909ff54a0f8c0b1115dbaea3f7090
+    revision: 8b8979228ae281c954c997e627eacde577e18e21
 include: []
 packages:
   - wireless-regdb
