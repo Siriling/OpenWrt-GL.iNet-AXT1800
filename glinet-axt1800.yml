@@ -12,7 +12,7 @@ feeds:
     path: ../../feeds/ipq807x
   - name: wifi_ax
     path: ../../feeds/wifi-ax
-  - name: gl_feeds_common
+  - name: gl_feed_common
     uri: https://github.com/gl-inet/gl-feeds.git
     revision: 4fd97cfe3c89f7277911375d9aa0ce85ac6d27c7
   - name: luci
@@ -25,7 +25,7 @@ feeds:
   - name: NueXini_Packages
     uri: https://github.com/NueXini/NueXini_Packages.git
     branch: main
-    revision: 3ee06a97777f6fea39c744187940962073c7cd8c
+    revision: c51859eb75b270269961101613f1615f611b367a
 include: []
 packages:
   - kmod-hwmon-pwmfan
