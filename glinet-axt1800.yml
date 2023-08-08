@@ -14,18 +14,18 @@ feeds:
     path: ../../feeds/wifi-ax
   - name: gl_feed_common
     uri: https://github.com/gl-inet/gl-feeds.git
-    revision: c924c76a4161d31587ccb6ae0dc160ba1aea0791
+    revision: a0aa569d2f19ea67b3ef224a4c7a0e017fff3f11
   - name: luci
     uri: https://github.com/openwrt/luci.git
     revision: 1c3b32dc1bec15e3076a447762b1c4f94eb75fb7
   - name: immortalwrt_luci
     uri: https://github.com/immortalwrt/luci.git
     branch: openwrt-21.02
-    revision: eedd2897ecf2311306fb6b0bd9296c7b3891e26d
+    revision: 65d92797a5f4138cfb6ac7e98022514d97730344
   - name: NueXini_Packages
     uri: https://github.com/NueXini/NueXini_Packages.git
     branch: main
-    revision: f230cf851ae1e302021642e39fc36784cecde2f4
+    revision: 2450b3dc538330f3e40d326b3caea61ce46095db
 include: []
 packages:
   - kmod-hwmon-pwmfan
