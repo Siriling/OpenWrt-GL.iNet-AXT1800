@@ -14,18 +14,18 @@ feeds:
     path: ../../feeds/wifi-ax
   - name: gl_feed_common
     uri: https://github.com/gl-inet/gl-feeds.git
-    revision: a0aa569d2f19ea67b3ef224a4c7a0e017fff3f11
+    revision: 2de0513c3fd1896c3c6351927031477ddd9d0830
   - name: luci
     uri: https://github.com/openwrt/luci.git
     revision: 1c3b32dc1bec15e3076a447762b1c4f94eb75fb7
   - name: immortalwrt_luci
     uri: https://github.com/immortalwrt/luci.git
     branch: openwrt-21.02
-    revision: 65d92797a5f4138cfb6ac7e98022514d97730344
+    revision: d53cd0763c099a9d75fdbd47bc1c4bf6c8f646c3
   - name: NueXini_Packages
     uri: https://github.com/NueXini/NueXini_Packages.git
     branch: main
-    revision: b44385ebd012bf377eabb9e4998c4fae1a41fbe6
+    revision: 23a9984e9a222ff5b4d00f29de47adca444e284e
 include: []
 packages:
   - wireless-regdb
